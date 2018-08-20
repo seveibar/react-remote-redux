@@ -1,0 +1,28 @@
+{
+  "name": "react-remote-redux",
+  "version": "0.0.1",
+  "description": "Easily manage state by reducing redux state on the server.",
+  "main": "dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack-command"
+  },
+  "author": "Severin Ibarluzea",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^16.4.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "remote-redux": "^0.0.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-rc.1",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-rc.1",
+    "@babel/preset-env": "^7.0.0-rc.1",
+    "@babel/preset-flow": "^7.0.0-rc.1",
+    "@babel/preset-react": "^7.0.0-rc.1",
+    "babel-loader": "^8.0.0-beta",
+    "webpack": "^4.16.5",
+    "webpack-command": "^0.4.1"
+  }
+}
