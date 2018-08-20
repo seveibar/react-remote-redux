@@ -1,7 +1,8 @@
 // @flow
 
-import React, { Component, createContext } from 'react'
+import React, { Component } from 'react'
 import { Provider } from 'react-redux'
+import { createStore } from 'remote-redux'
 
 export type Props = {
   classes?: any,
@@ -9,15 +10,12 @@ export type Props = {
   localReducer?: (state: any, action: any) => any,
   initialState?: Object,
   middlewares?: Array<Function>,
-  children: (state => any) | any
+  children: any
 }
 
 type State = {
   store: any
 }
-
-const RemoteReduxContext = createContext()
-export const RemoteReduxConsumer = RemoteReduxContext.Consumer
 
 const makeRequest = async () => {
   const response = await fetch(this.props.endpoint, {
@@ -47,13 +45,7 @@ class RemoteReduxProvider extends Component<Props, State> {
   render = () => {
     const { endpoint, children } = this.props
     const { store } = this.state
-    return (
-      <RemoteReduxContext.Provider
-        value={{ state: store.getState(), dispatch: store.dispatch }}
-      >
-        {typeof children === 'function' ? children(reduxState) : children}
-      </RemoteReduxContext.Provider>
-    )
+    return <Provider store={store}>{children}</Provider>
   }
 }
 
