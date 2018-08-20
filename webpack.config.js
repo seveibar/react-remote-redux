@@ -1,5 +1,8 @@
 module.exports = {
   mode: 'production',
+  output: {
+    libraryTarget: 'umd'
+  },
   module: {
     rules: [
       {
