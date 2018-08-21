@@ -17,15 +17,19 @@ type State = {
   store: any
 }
 
-const makeRequest = async () => {
-  const response = await fetch(this.props.endpoint, {
+const handleRequest = endpoint => async (
+  state: any,
+  action: any,
+  callback: Function
+) => {
+  const response = await fetch(endpoint, {
     method: 'POST',
     body: JSON.stringify({ state, action }),
     headers: new Headers({ 'Content-Type': 'application/json' })
   })
     .then(response => response.json())
     .then(response => {
-      this.setState({ newState: response.newState })
+      callback(response.newState)
     })
 }
 
@@ -37,7 +41,7 @@ class RemoteReduxProvider extends Component<Props, State> {
         reducer: props.localReducer || (state => state),
         initialState: props.initialState || null,
         middlewares: props.middlewares || [],
-        makeRequest
+        makeRequest: handleRequest(props.endpoint)
       })
     }
   }
