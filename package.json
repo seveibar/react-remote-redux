@@ -1,6 +1,6 @@
 {
   "name": "react-remote-redux",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Easily manage state by reducing redux state on the server.",
   "main": "dist/main.js",
   "scripts": {
