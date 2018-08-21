@@ -8,6 +8,7 @@ export type Props = {
   classes?: any,
   endpoint: string,
   localReducer?: (state: any, action: any) => any,
+  initialAction?: ?Object,
   initialState?: Object,
   middlewares?: Array<Function>,
   children: any
@@ -43,6 +44,17 @@ class RemoteReduxProvider extends Component<Props, State> {
         middlewares: props.middlewares || [],
         makeRequest: handleRequest(props.endpoint)
       })
+    }
+  }
+
+  componentDidMount = () => {
+    if (this.props.initialAction !== null) {
+      this.state.store.dispatch(
+        this.props.initialAction || {
+          type: '@@INIT',
+          remote: true
+        }
+      )
     }
   }
 
