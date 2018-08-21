@@ -48,11 +48,13 @@ class RemoteReduxProvider extends Component<Props, State> {
   }
 
   componentDidMount = () => {
-    if (this.props.initialAction !== null) {
+    const { initialAction } = this.props
+    if (initialAction !== null) {
       this.state.store.dispatch(
-        this.props.initialAction || {
+        initialAction || {
           type: '@@INIT',
-          remote: true
+          remote: true,
+          route: window.location.pathname
         }
       )
     }
