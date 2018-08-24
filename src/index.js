@@ -42,7 +42,9 @@ class RemoteReduxProvider extends Component<Props, State> {
         reducer: props.localReducer || (state => state),
         initialState: props.initialState || null,
         middlewares: props.middlewares || [],
-        makeRequest: handleRequest(props.endpoint)
+        makeRequest: props.makeRequest || handleRequest(props.endpoint),
+        detectRemoteAction: props.detectRemoteAction,
+        applyResponse: props.applyResponse
       })
     }
   }
