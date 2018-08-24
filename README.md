@@ -4,7 +4,7 @@ Remote Redux bindings for React with reasonable defaults.
 
 ## Example Usage
 
-ReactRemoteRedux provides a [redux](https://github.com/reactjs/redux) store via [react-redux](https://github.com/reactjs/redux).
+ReactRemoteRedux provides a [redux](https://github.com/reactjs/redux) store via [react-redux](https://github.com/reactjs/react-redux).
 It uses [remote redux](https://github.com/seveibar/remote-redux) behind the scenes to compute the next state.
 
 ```
