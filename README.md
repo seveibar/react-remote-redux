@@ -15,9 +15,7 @@ It uses [remote redux](https://github.com/seveibar/remote-redux) behind the scen
 
 By default, the endpoint `/api/reduce` will be called with a POST request whenever an action matches the
 condition `action.remote || action.type.startsWith('REMOTE_')`. The POST request will contain two parameters
-`state`, the JSON action and complete JSON state of the client ([see this note on efficiency](#efficiency)). The
-POST request should return a JSON object with a key `newState` in it's body containing the next state of the
-application.
+`state` and `action`. The `state` is the complete redux store state on the client ([see this note on efficiency](#efficiency)). The POST request should return a JSON object with a key `newState` in it's body containing the next state of the application.
 
 ## Props
 
