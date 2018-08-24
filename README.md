@@ -26,7 +26,7 @@ condition `action.remote || action.type.startsWith('REMOTE_')`. The POST request
 | initialState | `Optional` The default redux store state | `null` |
 | initialAction | `Optional` An initial action to be executed, e.g. to perform the initial page load | `{ type: 'REMOTE_LOAD_PAGE', page: window.location.pathname }` |
 | detectRemoteAction | `Optional` Method used to detect if the action should be sent to the server (remote reducer) | `action => action.remote || action.type.startsWith('REMOTE_')` |
-| makeRequest | `Optional` Method to perform request to server of type `(state,action,newStateCallback) => any` | |
+| makeRequest | `Optional` Method to perform request to server of type `(state,action,responseCallback) => any` | |
 | applyResponse | `Optional` Method to apply the response from the server to create the new state | `(response) => response.newState` |
 
 ## Efficiency
