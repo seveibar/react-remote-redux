@@ -1,6 +1,6 @@
 # React Remote Redux
 
-Remote redux bindings for React with reasonable defaults.
+Remote Redux bindings for React with reasonable defaults.
 
 ## Example Usage
 
@@ -8,10 +8,7 @@ ReactRemoteRedux provides a [redux](https://github.com/reactjs/redux) store via 
 It uses [remote redux](https://github.com/seveibar/remote-redux) behind the scenes to compute the next state.
 
 ```
-<ReactRemoteRedux
-  localReducer={(state, action) => state}
-  endpoint="/api/reduce"
->
+<ReactRemoteRedux endpoint="/api/reduce">
   <App />
 </ReactRemoteRedux>
 ```
@@ -28,6 +25,7 @@ application.
 | ---- | ----------- | ------- |
 | endpoint | Server endpoint to send POST request to. | "/api/reduce" |
 | localReducer | `Optional` A reducer reducer of the form `(state, action) => state` | |
+| initialState | `Optional` The default redux store state | `null` |
 | initialAction | `Optional` An initial action to be executed, e.g. to perform the initial page load | `{ type: 'REMOTE_LOAD_PAGE', page: window.location.pathname }` |
 | detectRemoteAction | `Optional` Method used to detect if the action should be sent to the server (remote reducer) | `action => action.remote || action.type.startsWith('REMOTE_')` |
 | makeRequest | `Optional` Method to perform request to server of type `(state,action,newStateCallback) => any` | |
