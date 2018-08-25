@@ -2,16 +2,27 @@
 
 Remote Redux bindings for React with reasonable defaults.
 
-## Example Usage
-
 ReactRemoteRedux provides a [redux](https://github.com/reactjs/redux) store via [react-redux](https://github.com/reactjs/react-redux).
 It uses [remote redux](https://github.com/seveibar/remote-redux) behind the scenes to compute the next state.
 
+## Installation and Usage
 ```
-<ReactRemoteRedux endpoint="/api/reduce">
-  <App />
-</ReactRemoteRedux>
+npm install react-remote-redux
 ```
+
+```javascript
+import ReactRemoteRedux from 'react-remote-redux'
+
+export default () => (
+  // Works similarly to <Provider /> from react-redux
+  <ReactRemoteRedux endpoint="/api/reduce">
+    <App />
+  </ReactRemoteRedux>
+)
+```
+
+Your App can now access the redux store normally, e.g. with the [react-redux](https://github.com/reactjs/react-redux) `connect` method.
+
 
 By default, the endpoint `/api/reduce` will be called with a POST request whenever an action matches the
 condition `action.remote || action.type.startsWith('REMOTE_')`. The POST request will contain two parameters
