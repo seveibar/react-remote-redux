@@ -1,8 +1,8 @@
 // @flow
 
-import React, { Component } from 'react'
-import { Provider } from 'react-redux'
-import { createStore } from 'remote-redux'
+import React, { Component } from "react"
+import { Provider } from "react-redux"
+import { createStore } from "remote-redux"
 
 export type Props = {
   classes?: any,
@@ -24,9 +24,9 @@ const handleRequest = endpoint => async (
   callback: Function
 ) => {
   const response = await fetch(endpoint, {
-    method: 'POST',
+    method: "POST",
     body: JSON.stringify({ state, action }),
-    headers: new Headers({ 'Content-Type': 'application/json' })
+    headers: new Headers({ "Content-Type": "application/json" })
   })
     .then(response => response.json())
     .then(response => {
@@ -41,10 +41,11 @@ class RemoteReduxProvider extends Component<Props, State> {
       store: createStore({
         reducer: props.localReducer || (state => state),
         initialState: props.initialState || null,
-        middlewares: props.middlewares || [],
+        middlewares: props.middlewares.filter(Boolean) || [],
         makeRequest: props.makeRequest || handleRequest(props.endpoint),
         detectRemoteAction: props.detectRemoteAction,
-        applyResponse: props.applyResponse
+        applyResponse: props.applyResponse,
+        useReduxDevTools: props.useReduxDevTools
       })
     }
   }
@@ -54,7 +55,7 @@ class RemoteReduxProvider extends Component<Props, State> {
     if (initialAction !== null) {
       this.state.store.dispatch(
         initialAction || {
-          type: '@@INIT',
+          type: "@@INIT",
           remote: true,
           route: window.location.pathname
         }
