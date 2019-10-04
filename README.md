@@ -28,6 +28,20 @@ By default, the endpoint `/api/reduce` will be called with a POST request whenev
 condition `action.remote || action.type.startsWith('REMOTE_')`. The POST request will contain two parameters
 `state` and `action`. The `state` is the complete redux store state on the client ([see this note on efficiency](#efficiency)). The POST request should return a JSON object with a key `newState` in it's body containing the next state of the application.
 
+## How It Works
+
+In regular redux, your manage your store (which includes your state) like this:
+
+![regular-redux](https://user-images.githubusercontent.com/1910070/66207393-a92cd200-e680-11e9-9fe6-7d73305bdea5.png)
+
+You might add something like redux sagas to call the server, which would make your store managed like this:
+
+![regular-redux-with-sagas](https://user-images.githubusercontent.com/1910070/66207393-a92cd200-e680-11e9-9fe6-7d73305bdea5.png)
+
+Remote Redux simplifies the setup above by removing the API bindings and the saga that manages them by moving the reducer to the server, your store is now managed like this:
+
+![remote-redux](https://user-images.githubusercontent.com/1910070/66207371-9a461f80-e680-11e9-857c-e6ef2482b68e.png)
+
 ## Props
 
 | Prop               | Description                                                                                     | Example                                                        |
