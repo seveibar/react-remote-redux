@@ -36,7 +36,7 @@ In regular redux, your manage your store (which includes your state) like this:
 
 You might add something like redux sagas to call the server, which would make your store managed like this:
 
-![regular-redux-with-sagas](https://user-images.githubusercontent.com/1910070/66207393-a92cd200-e680-11e9-9fe6-7d73305bdea5.png)
+![regular-redux-with-sagas](https://user-images.githubusercontent.com/1910070/66207406-b2b63a00-e680-11e9-8813-9fdee3386048.png)
 
 Remote Redux simplifies the setup above by removing the API bindings and the saga that manages them by moving the reducer to the server, your store is now managed like this:
 
